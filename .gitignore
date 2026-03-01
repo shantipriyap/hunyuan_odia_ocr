@@ -1,0 +1,51 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+venv/
+.venv/
+hunyuan_odia_ocr_env/
+env/
+
+# Data / training artifacts
+odia/
+checkpoints/
+output*/
+*.ckpt
+*.safetensors
+*.bin
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Media / charts
+*.png
+*.jpg
+*.jpeg
+*.gif
+
+# Logs
+*.log
+nohup.out
+
+# JSON result files
+benchmark_*.json
+*_results*.json
+REAL_BENCHMARK_RESULTS.json
+
+# Misc
+.DS_Store
+*.tmp
+*.bak
+trocr_processor/
+hf_space_odia/
+qwen_odia_ocr_gpu_optimized/
+blog/
+inference_samples/
+benchmark_data/
