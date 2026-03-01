@@ -35,20 +35,18 @@ dataset using LoRA (r=64, alpha=128).
 
 ---
 
-## Inference Samples *(checkpoint-2500, step 50% of training)*
+## Inference Samples *(checkpoint-2500, step 55% of training)*
 
-Samples selected from 30 test images to show range of model quality at mid-training.
+4 unique samples from 30 test images, sorted by CER (best → worst). Model is mid-training; no truly "good" samples exist yet — best outputs show partial character overlap.
 
 | Image | Ground Truth | Prediction | CER | Quality |
 |:---:|:---|:---|:---:|:---:|
-| <img src="https://huggingface.co/shantipriya/hunyuan-ocr-odia/resolve/main/samples2/sample_01.jpg" width="220"/> | ସର୍ଚ୍ଚ | ସମ୍ପର୍କ | 0.67 | ✅ Good |
-| <img src="https://huggingface.co/shantipriya/hunyuan-ocr-odia/resolve/main/samples2/sample_02.jpg" width="220"/> | ଲବଙ୍ଗକୁ | ମାନଙ୍କ | 0.71 | ✅ Good |
-| <img src="https://huggingface.co/shantipriya/hunyuan-ocr-odia/resolve/main/samples2/sample_03.jpg" width="220"/> | ସର୍ଚ୍ଚ | ସମ୍ପର୍କ | 0.67 | 🟡 Mixed |
-| <img src="https://huggingface.co/shantipriya/hunyuan-ocr-odia/resolve/main/samples2/sample_04.jpg" width="220"/> | ଲବଙ୍ଗକୁ | ମାନଙ୍କ | 0.71 | 🟡 Mixed |
+| <img src="https://huggingface.co/shantipriya/hunyuan-ocr-odia/resolve/main/samples2/sample_01.jpg" width="220"/> | ସର୍ଚ୍ଚ | ସମ୍ପର୍କ | 0.67 | 🟡 Partial |
+| <img src="https://huggingface.co/shantipriya/hunyuan-ocr-odia/resolve/main/samples2/sample_02.jpg" width="220"/> | ଲବଙ୍ଗକୁ | ମାନଙ୍କ | 0.71 | 🟡 Partial |
 | <img src="https://huggingface.co/shantipriya/hunyuan-ocr-odia/resolve/main/samples2/sample_05.jpg" width="220"/> | ପ୍ଲାଜ୍ମାରେ | ପ୍ରତିଦ୍ଵନ୍ଦୀ | 0.90 | 🔴 Poor |
-| <img src="https://huggingface.co/shantipriya/hunyuan-ocr-odia/resolve/main/samples2/sample_06.jpg" width="220"/> | ହୋଇଯାନ୍ତି | ପ୍ରତିଦ୍ଵନ୍ଦୀ | 1.11 | 🔴 Poor |
+| <img src="https://huggingface.co/shantipriya/hunyuan-ocr-odia/resolve/main/samples2/sample_06.jpg" width="220"/> | ହୋଇଯାନ୍ତି | ପ୍ରତିଦ୍ଵନ୍ଦୀ | 1.11 | 🔴 Very Poor |
 
-*✅ Good = CER < 0.40 · 🟡 Mixed = CER 0.40–0.80 · 🔴 Poor = CER > 0.80*
+*🟡 Partial = CER 0.60–0.80 (some characters correct) · 🔴 Poor = CER 0.80–1.0 · 🔴 Very Poor = CER > 1.0*
 
 ---
 
