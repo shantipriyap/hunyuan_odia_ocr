@@ -39,16 +39,30 @@ dataset using LoRA (r=64, alpha=128).
 
 ## Inference Samples *(checkpoint-3250, step 67% of training)*
 
-Samples from [Iftesha/odia-ocr-benchmark](https://huggingface.co/datasets/Iftesha/odia-ocr-benchmark) — paragraph-level images. Evaluated at ckpt-3250.
+Evaluated on 50 word-crop samples from [OdiaGenAIOCR/odia-ocr-merged](https://huggingface.co/datasets/OdiaGenAIOCR/odia-ocr-merged) test split. Samples are filtered by CER into three tiers.
 
-> ⚠️ This model was trained on **word-level crops**. Paragraph images are out-of-training-domain, so CER is high. The model correctly outputs valid Odia words but cannot yet handle full paragraphs.
+> **Note:** Training is still in progress (67% of 5000 steps). No sample scored CER < 0.35 yet — the best tier shows the *relatively* best outputs from this mid-training checkpoint.
 
-| Image | Ground Truth (truncated) | Prediction | CER | Category |
-|:---:|:---|:---|:---:|:---:|
-| <img src="https://huggingface.co/shantipriya/hunyuan-ocr-odia/resolve/main/samples3/benchmark_01.jpg" width="220"/> | ପରିଶ୍ରମ ହେ ଅଳସୁଆ, ପିମ୍ପୁଡ଼ିକୁ ଯାଅ; ତା'ର ମାର୍ଗ ବିଷୟରେ ଚିନ୍ତା କର ... | ପରିବେଷଣ | 0.98 | Digital |
-| <img src="https://huggingface.co/shantipriya/hunyuan-ocr-odia/resolve/main/samples3/benchmark_02.jpg" width="220"/> | ଆଜି ସନ୍ଧ୍ୟାର 20 ବଡ଼ ଖବର ସ୍କୁଲ ଖୋଲିବା ଓ ବନ୍ଦ ସମୟ ବଦଳିଲା ... | ବିଶ୍ୱାସ | 0.97 | Digital |
-| <img src="https://huggingface.co/shantipriya/hunyuan-ocr-odia/resolve/main/samples3/benchmark_03.jpg" width="220"/> | ଆଜି ୧୭ ମଇ ଶୁକ୍ରବାର ଚାଷୀଙ୍କୁ ୫୦୦୦୦ ଟଙ୍କା କ୍ଷତିପୂରଣ ... | ବାଲିକ | 0.97 | Digital |
-| <img src="https://huggingface.co/shantipriya/hunyuan-ocr-odia/resolve/main/samples3/benchmark_04.jpg" width="220"/> | ଓଁ ଶ୍ରୀପରମାତ୍ମନେ ନମଃ ଶ୍ରୀମଦ୍ଭଗବଦ୍‌ଗୀତା ଅଥ କରନ୍ୟାସଃ ... | ବାହାରିଥିଲେ | 0.99 | Book |
+### 🟡 Best Available (lowest CER from 50 samples)
+
+| Image | Ground Truth | Prediction | CER |
+|:---:|:---:|:---:|:---:|
+| <img src="https://huggingface.co/shantipriya/hunyuan-ocr-odia/resolve/main/samples4/word_01.jpg" width="220"/> | ମାଷ୍ଟର୍ | ପୁଷ୍ଟିକୁ | 0.71 |
+| <img src="https://huggingface.co/shantipriya/hunyuan-ocr-odia/resolve/main/samples4/word_02.jpg" width="220"/> | ଚାଷୀମାନେ | ପାଇଥିଲେ | 0.75 |
+
+### 🟠 Partial (CER 0.80–1.0)
+
+| Image | Ground Truth | Prediction | CER |
+|:---:|:---:|:---:|:---:|
+| <img src="https://huggingface.co/shantipriya/hunyuan-ocr-odia/resolve/main/samples4/word_03.jpg" width="220"/> | ଟ୍ୟୁବରକୁଲୋସିସ | ପ୍ରତିଦ୍ଵନ୍ଦୀ | 0.92 |
+| <img src="https://huggingface.co/shantipriya/hunyuan-ocr-odia/resolve/main/samples4/word_04.jpg" width="220"/> | ଦେବୀମାହାତ୍ମ୍ୟ | ପ୍ରତିବାଦ | 0.92 |
+
+### 🔴 Poor (CER > 2.0)
+
+| Image | Ground Truth | Prediction | CER |
+|:---:|:---:|:---:|:---:|
+| <img src="https://huggingface.co/shantipriya/hunyuan-ocr-odia/resolve/main/samples4/word_05.jpg" width="220"/> | ଟେକି | ପ୍ରତିକ୍ରିୟା | 2.25 |
+| <img src="https://huggingface.co/shantipriya/hunyuan-ocr-odia/resolve/main/samples4/word_06.jpg" width="220"/> | ଛନ୍ଦ | ପ୍ରତିକ୍ରିୟା | 2.50 |
 
 ---
 
