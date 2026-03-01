@@ -30,6 +30,60 @@ Fine-tuning [tencent/HunyuanOCR](https://huggingface.co/tencent/HunyuanOCR) on t
 
 ---
 
+## Inference Samples *(checkpoint-1250, step 25% of training)*
+
+> Images are from the `OdiaGenAIOCR/odia-ocr-merged` test split.  
+> Full evaluation at step 5000 will update the CER column above.
+
+<table>
+  <tr>
+    <th>Image</th>
+    <th>Ground Truth</th>
+    <th>Prediction (ckpt-1250)</th>
+    <th>CER</th>
+  </tr>
+  <tr>
+    <td><img src="https://huggingface.co/shantipriya/hunyuan-ocr-odia/resolve/main/samples/sample_01.jpg" width="220"/></td>
+    <td>ଚଳେଇବାପାଇଁ</td>
+    <td>ବାହୁଡ଼ା</td>
+    <td>0.90</td>
+  </tr>
+  <tr>
+    <td><img src="https://huggingface.co/shantipriya/hunyuan-ocr-odia/resolve/main/samples/sample_02.jpg" width="220"/></td>
+    <td>ପୁନର୍ନଭା</td>
+    <td>ବାହୁ</td>
+    <td>1.00</td>
+  </tr>
+  <tr>
+    <td><img src="https://huggingface.co/shantipriya/hunyuan-ocr-odia/resolve/main/samples/sample_03.jpg" width="220"/></td>
+    <td>ଟ୍ରଷ୍ଟର</td>
+    <td>ବାହୁ</td>
+    <td>1.00</td>
+  </tr>
+  <tr>
+    <td><img src="https://huggingface.co/shantipriya/hunyuan-ocr-odia/resolve/main/samples/sample_04.jpg" width="220"/></td>
+    <td>ସୀମାର</td>
+    <td>E151182</td>
+    <td>1.40</td>
+  </tr>
+  <tr>
+    <td><img src="https://huggingface.co/shantipriya/hunyuan-ocr-odia/resolve/main/samples/sample_05.jpg" width="220"/></td>
+    <td>ଟ୍ୟୁବରକୁଲୋସିସ</td>
+    <td>ବାହୁଡ଼ା</td>
+    <td>0.85</td>
+  </tr>
+  <tr>
+    <td><img src="https://huggingface.co/shantipriya/hunyuan-ocr-odia/resolve/main/samples/sample_06.jpg" width="220"/></td>
+    <td>ଟ୍ରାନ୍ସଭର୍ସସ</td>
+    <td>ବେକ୍ଟର</td>
+    <td>0.83</td>
+  </tr>
+</table>
+
+*Model outputs valid Odia script at step 1250. Loss dropped to 0.9964 by step 2100 — quality expected to improve significantly by step 5000.*
+
+---
+
 ## Training
 
 ### Requirements
