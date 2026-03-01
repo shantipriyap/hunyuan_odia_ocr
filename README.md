@@ -28,25 +28,27 @@ dataset using LoRA (r=64, alpha=128).
 | Checkpoint | Steps | CER↓ | WER↓ | Notes |
 |---|---|---|---|---|
 | Baseline (zero-shot) | 0 | 0.9111 | 0.9467 | HunyuanOCR, no fine-tuning |
-| v5 (r=32) | 1000 | **0.7577** | **0.846** | Best CER so far |
+| v5 (r=32) | 1000 | **0.7577** | **0.846** | Best word-level CER so far |
 | v7 (r=32) | 3200 | 0.7909 | 0.941 | r=32 capacity ceiling |
 | v8 baseline | 0 | 1.1188 | 1.4385 | Before v8 training |
-| **v8 ckpt-2500** (current) | 2500 | *in training* | — | Loss best=0.9964 @ step 2100 |
+| **v8 ckpt-3250** (latest) | 3250 | *in training* | — | Loss ~0.93 best; 67% done |
+
+> **Note on evaluation:** Training uses word-level crops (`OdiaGenAIOCR/odia-ocr-merged`). The `Iftesha/odia-ocr-benchmark` dataset contains paragraph-level images — a different domain where this model scores CER ~0.99 (expected, not trained on paragraphs).
 
 ---
 
-## Inference Samples *(checkpoint-2500, step 55% of training)*
+## Inference Samples *(checkpoint-3250, step 67% of training)*
 
-4 unique samples from 30 test images, sorted by CER (best → worst). Model is mid-training; no truly "good" samples exist yet — best outputs show partial character overlap.
+Samples from [Iftesha/odia-ocr-benchmark](https://huggingface.co/datasets/Iftesha/odia-ocr-benchmark) — paragraph-level images. Evaluated at ckpt-3250.
 
-| Image | Ground Truth | Prediction | CER | Quality |
+> ⚠️ This model was trained on **word-level crops**. Paragraph images are out-of-training-domain, so CER is high. The model correctly outputs valid Odia words but cannot yet handle full paragraphs.
+
+| Image | Ground Truth (truncated) | Prediction | CER | Category |
 |:---:|:---|:---|:---:|:---:|
-| <img src="https://huggingface.co/shantipriya/hunyuan-ocr-odia/resolve/main/samples2/sample_01.jpg" width="220"/> | ସର୍ଚ୍ଚ | ସମ୍ପର୍କ | 0.67 | 🟡 Partial |
-| <img src="https://huggingface.co/shantipriya/hunyuan-ocr-odia/resolve/main/samples2/sample_02.jpg" width="220"/> | ଲବଙ୍ଗକୁ | ମାନଙ୍କ | 0.71 | 🟡 Partial |
-| <img src="https://huggingface.co/shantipriya/hunyuan-ocr-odia/resolve/main/samples2/sample_05.jpg" width="220"/> | ପ୍ଲାଜ୍ମାରେ | ପ୍ରତିଦ୍ଵନ୍ଦୀ | 0.90 | 🔴 Poor |
-| <img src="https://huggingface.co/shantipriya/hunyuan-ocr-odia/resolve/main/samples2/sample_06.jpg" width="220"/> | ହୋଇଯାନ୍ତି | ପ୍ରତିଦ୍ଵନ୍ଦୀ | 1.11 | 🔴 Very Poor |
-
-*🟡 Partial = CER 0.60–0.80 (some characters correct) · 🔴 Poor = CER 0.80–1.0 · 🔴 Very Poor = CER > 1.0*
+| <img src="https://huggingface.co/shantipriya/hunyuan-ocr-odia/resolve/main/samples3/benchmark_01.jpg" width="220"/> | ପରିଶ୍ରମ ହେ ଅଳସୁଆ, ପିମ୍ପୁଡ଼ିକୁ ଯାଅ; ତା'ର ମାର୍ଗ ବିଷୟରେ ଚିନ୍ତା କର ... | ପରିବେଷଣ | 0.98 | Digital |
+| <img src="https://huggingface.co/shantipriya/hunyuan-ocr-odia/resolve/main/samples3/benchmark_02.jpg" width="220"/> | ଆଜି ସନ୍ଧ୍ୟାର 20 ବଡ଼ ଖବର ସ୍କୁଲ ଖୋଲିବା ଓ ବନ୍ଦ ସମୟ ବଦଳିଲା ... | ବିଶ୍ୱାସ | 0.97 | Digital |
+| <img src="https://huggingface.co/shantipriya/hunyuan-ocr-odia/resolve/main/samples3/benchmark_03.jpg" width="220"/> | ଆଜି ୧୭ ମଇ ଶୁକ୍ରବାର ଚାଷୀଙ୍କୁ ୫୦୦୦୦ ଟଙ୍କା କ୍ଷତିପୂରଣ ... | ବାଲିକ | 0.97 | Digital |
+| <img src="https://huggingface.co/shantipriya/hunyuan-ocr-odia/resolve/main/samples3/benchmark_04.jpg" width="220"/> | ଓଁ ଶ୍ରୀପରମାତ୍ମନେ ନମଃ ଶ୍ରୀମଦ୍ଭଗବଦ୍‌ଗୀତା ଅଥ କରନ୍ୟାସଃ ... | ବାହାରିଥିଲେ | 0.99 | Book |
 
 ---
 
@@ -59,7 +61,10 @@ dataset using LoRA (r=64, alpha=128).
 | 910 | 1.0948 |
 | 1500 | ~1.11 |
 | **2100** | **0.9964** ← first sub-1.0 |
-| 2517 | ~1.12 (in training, 50% done) |
+| 2580 | 0.9339 ← best so far |
+| 2750 | 1.0291 |
+| 3000 | ~0.979 |
+| **3250** | **~0.979** (67% done, in training) |
 
 ---
 
